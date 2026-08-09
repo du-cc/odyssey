@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Odyssey | Explore Premium Formats — Fan Edition</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="topbar">
+  </div>
+
+  <div class="heading">
+    <h1 class="title">Explore Premium Formats</h1>
+    <p class="description">Explore the differences of each film format by selecting the format name and seeing the trailer adjust to the accompanying aspect ratio.</p>
+  </div>
+
+  <div class="format-selector-container">
+    <div class="format-scroll-box">
+      <div class="format-formats" id="formatRow"></div>
+    </div>
+  </div>
+
+  <div class="player-format-wrapper">
+    <div class="video-player">
+      <div class="trailer-box">
+        <div class="trailer" id="trailer">
+
+          <div class="upload-state" id="uploadState">
+            <button class="upload-btn" id="uploadBtnMain">Upload a photo or video</button>
+          </div>
+
+          <video id="videoEl" class="media-fill" controls playsinline loop hidden></video>
+          <img id="imageEl" class="media-fill" hidden>
+
+          <div class="bars" id="bars">
+            <div class="bar top-bar" id="topBar"></div>
+            <div class="bar bottom-bar" id="bottomBar"></div>
+            <div class="bar left-bar" id="leftBar"></div>
+            <div class="bar right-bar" id="rightBar"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <input type="file" id="fileInput" accept="image/*,video/*" hidden>
+
+  <div class="player-format-wrapper">
+    <div class="change-row" id="changeRow" hidden>
+      <button class="change-media" id="changeBtn">Change file</button>
+    </div>
+  </div>
+
+  <div class="format-description-wrapper">
+    <div class="format-description">
+      <div class="fd-logo-row">
+        <div class="fd-logo" id="fdLogo"></div>
+      </div>
+      <div class="fd-name" id="fdName">IMAX 70mm · 1.43:1</div>
+      <div class="fd-desc" id="fdDesc">
+        Every frame of <em>The Odyssey</em> was shot with IMAX Film Cameras. In IMAX 70mm locations, the film will be presented in IMAX's 1.43:1 Expanded Aspect Ratio. Each film frame has 15 perforations and runs horizontally through the projector. It is the largest and highest-resolution format available and gives you an unparalleled sense of immersion as the image fills IMAX's signature floor-to-ceiling screen.
+      </div>
+      <div class="fd-disclaimer">This website illustrates framing and composition, not physical screen size. While one aspect ratio may appear taller, real-world screen dimensions and projection setup vary significantly by theater.</div>
+    </div>
+  </div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
