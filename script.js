@@ -54,8 +54,6 @@ const formats = [
   {
     id: "large",
     label: "Large Format",
-    // Site's authoritative config: largeFormat ratio = 2.39:1, alternateRatio = 1.85:1
-    // (same primary ratio as 35mm).
     ratio: "2.39:1",
     altRatio: "1.85:1",
     ratioValue: "2.39",
@@ -87,12 +85,6 @@ let activeIndex = 0;
 let objectUrl = null;
 const fileLogoCache = {};
 
-// Matches the official site's aspectRatioTrailer component: it doesn't
-// resize the video itself. It keeps the trailer box at a fixed 1.43:1 base
-// ratio (object-fit: cover), then draws opaque bars on top to letterbox
-// (top/bottom) or pillarbox (left/right) it down to the selected format's
-// ratio. The whole box is then scaled via CSS transform so every format
-// occupies the same visual AREA, not just the same width.
 const SCALE_TO_UNIFORM_AREA = true;
 let trailerWidth = 0;
 let trailerHeight = 0;
@@ -104,8 +96,6 @@ function getMeasurements(){
 }
 
 function getBaseTrailerArea(){
-  // Site's reference area is always computed off a 2.39:1 frame at the
-  // current trailer width.
   return trailerWidth / +('2.39:1'.split(':')[0]) * trailerWidth;
 }
 
@@ -128,8 +118,6 @@ function getObscuringBarsMeasurements(ratio){
   let scaleFactor = getTrailerScaleFactor(ratio);
 
   if(ratio === '1.85:1'){
-    // 1.85:1 "Flat" is presented via a DCI container pillarboxed inside the
-    // 1.43:1 box (3996/4096 of the width), matching the site exactly.
     const flatWidth = trailerWidth * (3996 / 4096);
     sideBarWidth = Math.max(0, (trailerWidth - flatWidth) / 2 + 1);
     topBottomBarHeight = getObscuringBarHeight(ratio, flatWidth);
@@ -154,8 +142,6 @@ function applyBars(ratio){
   trailerBox.style.transform = SCALE_TO_UNIFORM_AREA ? `scale(${scaleFactor})` : '';
 }
 
-// Only used for the three larger wordmarks that live in assets/logos/.
-// Falls back to <img> if fetch is blocked (e.g. opened via file:// instead of a server).
 async function getFileLogoMarkup(file){
   if(fileLogoCache[file]) return fileLogoCache[file];
   let markup;
